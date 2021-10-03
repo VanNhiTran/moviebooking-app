@@ -1,10 +1,29 @@
-import { baseService } from "./baseService";
+import { GROUPID } from "../util/settings/config";
+import BaseService from "./baseService";
 
-export class QuanLyPhimService extends baseService {
+export default class QuanLyPhimService extends BaseService {
   constructor() {
     super();
   }
-  getMovieList = () => {
-    return this.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`);
-  };
+  getMovieList(tenPhim = "") {
+    if (tenPhim.trim() != "") {
+      return this.get(
+        `api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}&tenPhim=${tenPhim}`
+      );
+    }
+    return this.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}`);
+  }
+  addFilm(formData) {
+    return this.post(`api/QuanLyPhim/ThemPhimUploadHinh`, formData);
+  }
+  getFilmInfo(id) {
+    return this.get(`api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
+  }
+  updateFilm(formData) {
+    return this.post(`api/QuanLyPhim/CapNhatPhimUpload`, formData);
+  }
+  deleteFilm(id) {
+    return this.delete(`api/QuanLyPhim/XoaPhim?MaPhim=${id}`);
+  }
 }
+export const quanLyPhimService = new QuanLyPhimService();

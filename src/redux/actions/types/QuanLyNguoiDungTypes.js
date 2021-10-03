@@ -1,0 +1,3 @@
+export const LOGIN_ACTION = "LOGIN_ACTION";
+export const RENDER_USER_LIST = "RENDER_USER_LIST";
+export const RENDER_USER_INFO = "RENDER_USER_INFO";

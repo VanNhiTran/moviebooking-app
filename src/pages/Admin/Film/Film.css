@@ -1,0 +1,11 @@
+.ant-pagination-item a {
+    color: black !important
+    
+}
+.ant-form-item-label > label {
+    color: black !important
+    ;
+}
+.ant-picker-header button{
+    background-color: rgb(177, 45, 45);
+}

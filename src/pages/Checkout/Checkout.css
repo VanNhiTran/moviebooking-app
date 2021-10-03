@@ -1,0 +1,56 @@
+
+.seat {
+    width: 30px;
+    height: 30px;
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    background-color: #6b6161 ;
+    color: #fff;
+}
+
+.bookedSeat {
+    background-color: #6b6161 ;
+    cursor: no-drop;
+}
+
+.vipSeat {
+    background-color: #d63535 
+}
+
+.selectingSeat {
+    background-color: #28b15f !important
+}
+.checkout {
+    padding-left: 10px;
+    font-size: 30px;
+    padding-right: 20px;
+    color: rgb(235, 17, 28);
+}
+.flexCheckout {
+
+    align-items: center;
+    justify-content: space-between;
+}
+.fa.fa-times {
+    color: white;
+    padding: 0;
+    font-size: 15px;
+}
+
+
+.seatTable{
+    margin: 10px auto;
+}
+.ant-tabs{
+    color: wheat !important
+}
+.ant-tabs-extra-content{
+    margin: 0 35px;
+}
+.btnlogOut{
+    margin-left: 20px;
+    background-color: wheat;
+    color: rgb(177, 45, 45) !important
+}

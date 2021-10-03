@@ -1,0 +1,40 @@
+import {
+  CANCEL_BOOKING,
+  RENDER_CINEMAROOM_DETAIL,
+  SELECT_SEAT,
+} from "../actions/types/QuanLyDatVeTypes";
+
+const stateDefault = {
+  cinemaRoomDetail: {},
+  arrSelectingSeats: [],
+};
+
+export const QuanLyDatVeReducer = (state = stateDefault, action) => {
+  switch (action.type) {
+    case RENDER_CINEMAROOM_DETAIL: {
+      state.cinemaRoomDetail = action.cinemaRoomDetail;
+      return { ...state };
+    }
+    case SELECT_SEAT: {
+      let arrUpdateSeats = [...state.arrSelectingSeats];
+      let index = arrUpdateSeats.findIndex(
+        (selectingSeat) => selectingSeat.maGhe === action.selectingSeat.maGhe
+      );
+
+      if (index !== -1) {
+        arrUpdateSeats.splice(index, 1);
+      } else {
+        arrUpdateSeats.push(action.selectingSeat);
+      }
+      state.arrSelectingSeats = arrUpdateSeats;
+      return { ...state };
+      // return { ...state, arrSelectingSeats: [] };
+    }
+    case CANCEL_BOOKING: {
+      console.log(`arrSelectingSeats`, state.arrSelectingSeats);
+      return { ...state, arrSelectingSeats: [] };
+    }
+    default:
+      return { ...state };
+  }
+};

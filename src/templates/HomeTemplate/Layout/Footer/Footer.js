@@ -1,12 +1,41 @@
-import React from "react";
+import axios from "axios";
+import _ from "lodash";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import logo from "../../../../assets/img/logo.png";
+import {
+  getCinameInfoAction,
+  getCinemaSystemListAction,
+} from "../../../../redux/actions/QuanLyRapAction";
 
 export default function Footer() {
+  const { arrCinemaSystemList } = useSelector(
+    (state) => state.QuanLyRapReducer
+  );
+  console.log(arrCinemaSystemList);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCinemaSystemListAction());
+  }, []);
+  const arrCinema = _.map(arrCinemaSystemList, (cinema) =>
+    _.pick(cinema, ["tenHeThongRap", "logo"])
+  );
+  const renderArrCinema = () => {
+    return arrCinema.map((cinema, index) => {
+      return (
+        <a href="#" style={{ maxWidth: "40px" }} key={index}>
+          <img className="rounded-full" src={cinema.logo} />
+        </a>
+      );
+    });
+  };
+
   return (
     <footer className="py-6 bg-coolGray-800 text-coolGray-50 text-white bg-gray-900">
-      <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
+      <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50 w-3/4">
         <div className="grid grid-cols-12">
-          <div className="pb-6 col-span-full md:pb-0 md:col-span-6">
+          <div className="pb-6 col-span-full md:pb-0 md:col-span-4">
             <a
               href="#"
               className="flex justify-center space-x-3 md:justify-start"
@@ -15,75 +44,103 @@ export default function Footer() {
                 <img src={logo} className="rounded-full w-20" />
               </div>
               <span className="self-center text-2xl font-semibold text-white">
-                Brand name
+                MECI MOVIE
               </span>
             </a>
           </div>
-          <div className="col-span-6 text-center md:text-left md:col-span-3">
+
+          <div className="col-span-6 text-center md:text-left md:col-span-4">
             <p className="pb-1 text-lg font-medium">Category</p>
             <ul>
               <li>
                 <a href="#" className="hover:dark:text-violet-400 text-white ">
-                  Link
+                  FAQs
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:dark:text-violet-400 text-white ">
-                  Link
+                  Chính sách bảo mật
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:dark:text-violet-400 text-white ">
-                  Link
+                  Thỏa thuận sử dụng
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:dark:text-violet-400 text-white">
-                  Link
+                  Đăng kí đối tác
                 </a>
               </li>
-              <li>
-                <a href="#" className="hover:dark:text-violet-400 text-white">
-                  Link
-                </a>
-              </li>
-              {/**/}
             </ul>
           </div>
+
           <div className="col-span-6 text-center md:text-left md:col-span-3">
-            <p className="pb-1 text-lg font-medium">Category</p>
+            <p className="pb-1 text-lg font-medium">Đối tác của Meci</p>
+            <div className="grid grid-cols-2 gap-4 ">{renderArrCinema()}</div>
+          </div>
+        </div>
+        <div
+          id="contact"
+          className="grid sm:grid-cols-2 sm:grid-col-1 gap-3 justify-center text-center pt-16"
+        >
+          <div className="col-md-6 col-xs-12">
             <ul>
               <li>
-                <a href="#" className="hover:dark:text-violet-400 text-white">
-                  Link
-                </a>
+                <h3
+                  style={{ color: "white", fontSize: "20px" }}
+                  className="widget-title"
+                >
+                  LIÊN HỆ CHÚNG TÔI
+                </h3>
+                <div className="textwidget custom-html-widget">
+                  <h3>
+                    <b style={{ color: "white" }}>
+                      CÔNG TY CỔ PHẦN MEDIA CINEMA
+                    </b>
+                  </h3>
+                  <p>
+                    <i className="fa fa-map-marker" />
+                    &nbsp; 189 Lê Duẩn,Phước Hải, TT. Long Thành, H. Long Thành,
+                    Đồng Nai
+                  </p>
+                  <p>
+                    <i className="fa fa-phone" aria-hidden="true">
+                      &nbsp;
+                    </i>
+                    0368 200 200
+                  </p>
+                  <p>
+                    <i className="fa fa-envelope" aria-hidden="true">
+                      &nbsp;
+                    </i>
+                    <a
+                      style={{ display: "inline" }}
+                      href="mailto:mecicom.com@gmail.com"
+                    >
+                      mecicom.com@gmail.com
+                    </a>
+                  </p>
+                  <p>&nbsp;</p>
+                </div>
               </li>
-              <li>
-                <a href="#" className="hover:dark:text-violet-400 text-white">
-                  Link
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:dark:text-violet-400 text-white">
-                  Link
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:dark:text-violet-400 text-white">
-                  Link
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:dark:text-violet-400 text-white">
-                  Link
-                </a>
-              </li>
-              {/**/}
             </ul>
+          </div>
+          <div className="col-md-6 col-xs-12">
+            <iframe
+              title="map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.29462922458!2d106.94550441422524!3d10.788731461917944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31751f9232f42a8d%3A0xab2c4ff6191f09f8!2zUuG6oXAgQmV0YSBMb25nIFRow6BuaA!5e0!3m2!1svi!2s!4v1633162204577!5m2!1svi!2s"
+              style={{ width: "100%", height: "300px" }}
+              allowfullscreen
+              // loading="lazy"
+            ></iframe>
           </div>
         </div>
         <div className="grid justify-center pt-6 lg:justify-between">
-          <div className="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
+          <div
+            className="flex space-x-4 justify-center"
+            style={{ alignItems: "center" }}
+          >
             <span>©2021 All rights reserved</span>
             <a href="#">
               <span>Privacy policy</span>
@@ -92,6 +149,7 @@ export default function Footer() {
               <span>Terms of service</span>
             </a>
           </div>
+
           <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
             <a
               href="#"
