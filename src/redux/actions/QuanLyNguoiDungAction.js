@@ -4,6 +4,7 @@ import {
   LOGIN_ACTION,
   RENDER_USER_INFO,
   RENDER_USER_LIST,
+  SET_BOOKING_HISTORY,
 } from "./types/QuanLyNguoiDungTypes";
 
 export const LoginAction = (loginInfo) => {
@@ -21,6 +22,20 @@ export const LoginAction = (loginInfo) => {
   };
 };
 
+export const getFullUserInfoAction = (taiKhoan) => {
+  return async (dispatch) => {
+    try {
+      const res = await quanLyNguoiDungService.getFullUserInfo(taiKhoan);
+      dispatch({
+        type: SET_BOOKING_HISTORY,
+        fullUserInfo: res.data,
+      });
+      console.log(`res.data`, res.data);
+    } catch (error) {
+      console.log(`error`, error);
+    }
+  };
+};
 export const getUserListAction = () => {
   return async (dispatch) => {
     try {

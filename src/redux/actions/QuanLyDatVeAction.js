@@ -2,6 +2,8 @@ import { history } from "../../App";
 import { quanLyDatVeService } from "../../services/QuanLyDatVeService";
 import {
   BOOK_TICKET,
+  CANCEL_BOOKING,
+  CHANGE_TAB,
   RENDER_CINEMAROOM_DETAIL,
 } from "./types/QuanLyDatVeTypes";
 
@@ -28,8 +30,9 @@ export const bookTicketInfoAction = (info) => {
         ticketInfo: res.data,
       });
       alert("Bạn đã đặt vé thành công!");
-      history.push("/");
-      console.log(res.data);
+      await dispatch(getCinemaRoomDetailAction(info.maLichChieu));
+      await dispatch({ type: CANCEL_BOOKING });
+      await dispatch({ type: CHANGE_TAB });
     } catch (error) {
       console.log(error);
     }

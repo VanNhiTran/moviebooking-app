@@ -62,7 +62,7 @@ const MultipleRows = (props) => {
     prevArrow: <SamplePrevArrow />,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 668,
         settings: {
           rows: 1,
           slidesToShow: 1,
@@ -72,7 +72,7 @@ const MultipleRows = (props) => {
   };
 
   return (
-    <div>
+    <div className="">
       <div className="m-auto w-2/3 text text-center">
         <button
           className="mx-5"

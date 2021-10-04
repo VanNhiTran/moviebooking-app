@@ -6,6 +6,7 @@ import bgImg from "../../assets/img/BG.png";
 import desk from "../../assets/img/desk2.png";
 import logo from "../../assets/img/logo.png";
 import { useDispatch, useSelector } from "react-redux";
+import "../css/checkout.css";
 import {
   bookTicketInfoAction,
   getCinemaRoomDetailAction,
@@ -13,11 +14,16 @@ import {
 import "./Checkout.css";
 import {
   CANCEL_BOOKING,
+  CHANGE_TAB,
+  CHANGE_TAB_ACTIVE,
   SELECT_SEAT,
 } from "../../redux/actions/types/QuanLyDatVeTypes";
 import _ from "lodash";
 import { Tabs } from "antd";
 import { NavLink } from "react-router-dom";
+import { history } from "../../App";
+import { getFullUserInfoAction } from "../../redux/actions/QuanLyNguoiDungAction";
+import moment from "moment";
 
 function Checkout(props) {
   const { cinemaRoomDetail, arrSelectingSeats } = useSelector(
@@ -66,7 +72,7 @@ function Checkout(props) {
             className={`seat ${classVipSeat} ${classBookedSeat} ${classSelectingSeat} p-0`}
             key={index}
           >
-            {seat.daDat ? <i class="fa fa-times"></i> : seat.stt}
+            {seat.daDat ? <i className="fa fa-times"></i> : seat.stt}
           </button>
           {(index + 1) % 16 === 0 ? <br /> : ""}
         </Fragment>
@@ -75,9 +81,9 @@ function Checkout(props) {
   };
 
   return (
-    <div className="py-16 px-10">
+    <div className="py-16 lg:px-10 px-1">
       <div className="grid grid-cols-12">
-        <div className="col-span-9 m-auto text-center">
+        <div className="lg:col-span-9 col-span-12 m-auto text-center">
           <div className=" items-center">
             <div>
               <img src={screenImg} alt="" />
@@ -116,7 +122,7 @@ function Checkout(props) {
             </table>
           </div>
         </div>
-        <div className="col-span-3">
+        <div className="lg:col-span-3 lg:mt-0 lg:px-0 col-span-12  mt-10 px-20">
           <h3 className="text-green-400 text-center text-4xl">
             TỔNG TIỀN:{" "}
             {arrSelectingSeats?.reduce((total, seat, index) => {
@@ -137,6 +143,7 @@ function Checkout(props) {
           <p>
             NGÀY CHIẾU: {thongTinPhim?.ngayChieu} - {thongTinPhim?.gioChieu}
           </p>
+          <p>RẠP: {thongTinPhim?.tenRap}</p>
           <hr />
           <div className="my-5">
             <div className="flex flexCheckout">
@@ -192,23 +199,162 @@ function Checkout(props) {
   );
 }
 
+function BookingResult(props) {
+  const { fullUserInfo } = useSelector((state) => state.QuanLyNguoiDungReducer);
+  console.log(`fullUserInfo`, fullUserInfo);
+
+  const { userLogin } = useSelector((state) => state.QuanLyNguoiDungReducer);
+  console.log(`userLogin`, userLogin);
+
+  const thongTinDatVe = fullUserInfo?.thongTinDatVe;
+  console.log(`thongTinDatVe`, thongTinDatVe);
+
+  const dispatch = useDispatch();
+  let currentUser = { taiKhoan: userLogin.taiKhoan };
+  useEffect(() => {
+    dispatch(getFullUserInfoAction(currentUser));
+  }, []);
+
+  const renderHistory = () => {
+    return thongTinDatVe?.splice(0, 10).map((ve, index) => {
+      return (
+        <div
+          className={index % 2 === 0 ? "Rtable-row is-striped " : "Rtable-row"}
+          key={index}
+        >
+          <div className="Rtable-cell date-cell">
+            <div className="Rtable-cell--heading">Ngày đặt vé</div>
+            <div className="Rtable-cell--content date-content">
+              <span className="webinar-date">
+                {moment(ve.ngayDat).format("DD/MM/YYYY")}
+              </span>
+            </div>
+          </div>
+          <div className="Rtable-cell topic-cell">
+            <div className="Rtable-cell--content title-content">
+              {ve.tenPhim}
+            </div>
+          </div>
+          <div className="Rtable-cell access-link-cell">
+            <div className="Rtable-cell--heading">Rạp</div>
+            <div className="Rtable-cell--content access-link-content">
+              {ve.danhSachGhe[0].tenHeThongRap}
+            </div>
+          </div>
+          <div className="Rtable-cell replay-link-cell">
+            <div className="Rtable-cell--heading">Ghế</div>
+            <div className="Rtable-cell--content replay-link-content">
+              {ve.danhSachGhe.map((ghe, index) => {
+                return (
+                  <span className="ml-3" key={index}>
+                    {ghe.tenGhe}
+                  </span>
+                );
+              })}
+            </div>
+          </div>
+          <div className="Rtable-cell Rtable-cell--foot pdf-cell">
+            <div className="Rtable-cell--heading">Giá vé</div>
+            <div className="Rtable-cell--content pdf-content">
+              {ve.giaVe}/vé
+            </div>
+          </div>
+        </div>
+      );
+    });
+  };
+
+  return (
+    <div className="wrapper">
+      <h1>THÔNG TIN NGƯỜI DÙNG</h1>
+      <div className="Rtable Rtable--5cols Rtable--collapse">
+        <div className="Rtable-row Rtable-row--head">
+          <div className="Rtable-cell date-cell column-heading">Tài khoản</div>
+          <div className="Rtable-cell topic-cell column-heading">
+            Tên khách hàng
+          </div>
+          <div className="Rtable-cell access-link-cell column-heading">
+            Số điện thoại
+          </div>
+          <div className="Rtable-cell replay-link-cell column-heading">
+            Email
+          </div>
+        </div>
+        <div className="Rtable-row">
+          <div className="Rtable-cell date-cell">
+            <div className="Rtable-cell--heading">Tài khoản</div>
+            <div className="Rtable-cell--content date-content">
+              <span className="webinar-date">{userLogin.taiKhoan}</span>
+            </div>
+          </div>
+          <div className="Rtable-cell topic-cell">
+            <div className="Rtable-cell--content title-content">
+              {userLogin.hoTen}
+            </div>
+          </div>
+          <div className="Rtable-cell access-link-cell">
+            <div className="Rtable-cell--heading">Số ĐT</div>
+            <div className="Rtable-cell--content access-link-content">
+              {userLogin.soDT}
+            </div>
+          </div>
+          <div className="Rtable-cell replay-link-cell">
+            <div className="Rtable-cell--heading">Email</div>
+            <div className="Rtable-cell--content replay-link-content">
+              {userLogin.email}
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        className="mb-12"
+        onClick={() => {
+          dispatch({ type: CHANGE_TAB_ACTIVE });
+        }}
+      >
+        TIẾP TỤC ĐẶT VÉ...
+      </button>
+
+      <h1>THÔNG TIN ĐẶT VÉ</h1>
+      <div className="Rtable Rtable--5cols Rtable--collapse">
+        <div className="Rtable-row Rtable-row--head">
+          <div className="Rtable-cell date-cell column-heading">
+            Ngày đặt vé
+          </div>
+          <div className="Rtable-cell topic-cell column-heading">Tên phim</div>
+          <div className="Rtable-cell access-link-cell column-heading">Rạp</div>
+          <div className="Rtable-cell replay-link-cell column-heading">Ghế</div>
+          <div className="Rtable-cell pdf-cell column-heading">Giá vé</div>
+        </div>
+        {renderHistory()}
+      </div>
+    </div>
+  );
+}
+
 const { TabPane } = Tabs;
+
 export default function (props) {
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDungReducer);
+
+  const { activeKey } = useSelector((state) => state.QuanLyDatVeReducer);
+
   const dispatch = useDispatch();
 
   const { arrSelectingSeats } = props;
 
   const operations = (
     <Fragment>
-      <button>
-        <a href="/profile">Hi</a>
-      </button>
+      <button>Hi</button>
       <button
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
         className="btnlogOut"
         onClick={() => {
           localStorage.removeItem(USER_LOGIN);
           localStorage.removeItem(TOKEN);
+          history.push("/");
         }}
       >
         Đăng xuất
@@ -238,7 +384,12 @@ export default function (props) {
       >
         <img src={logo} alt="" width={150} height={100} />
       </NavLink>
-      <Tabs defaultActiveKey="1" centered tabBarExtraContent={operations}>
+      <Tabs
+        defaultActiveKey="1"
+        activeKey={activeKey.toString()}
+        centered
+        tabBarExtraContent={operations}
+      >
         <TabPane
           tab={
             <span>
@@ -250,9 +401,8 @@ export default function (props) {
         >
           <Checkout {...props} />
         </TabPane>
-
         <TabPane tab="KẾT QUẢ ĐẶT VÉ" key="2">
-          Content of Tab Pane 2
+          <BookingResult />
         </TabPane>
       </Tabs>
     </div>

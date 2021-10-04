@@ -4,8 +4,6 @@ import { createBrowserHistory } from "history";
 import { Route, Router, Switch } from "react-router-dom";
 import { HomeTemplate } from "./templates/HomeTemplate/HomeTemplate";
 import Home from "./pages/Home/Home";
-import Contact from "./pages/Contact/Contact";
-// import News from "./pages/News/News";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/Sign-up/SignUp";
 import DetailFilm from "./pages/FilmDetail/FilmDetail";
@@ -15,7 +13,6 @@ import AdminTemplate from "./templates/AdminTemplate/AdminTemplate";
 import Film from "./pages/Admin/Film/Film";
 import AddFilm from "./pages/Admin/Film/Addfilm/AddFilm";
 import User from "./pages/Admin/Users/User";
-// import Edit from "./pages/Admin/Film/Edit/EditFilm";
 import Showtime from "./pages/Admin/Film/Showtimes/Showtime";
 import AddUser from "./pages/Admin/Users/AddUser/AddUser";
 import EditFilm from "./pages/Admin/Film/Edit/EditFilm";
@@ -28,7 +25,6 @@ function App() {
       <Switch>
         <HomeTemplate path="/home" exact Component={Home} />
         <HomeTemplate path="/" exact Component={Home} />
-        <HomeTemplate path="/contact" exact Component={Contact} />
         {/* <HomeTemplate path="/news" exact Component={News} /> */}
         <HomeTemplate path="/detail/:id" exact Component={DetailFilm} />
         <CheckoutTemplate path="/checkout/:id" exact Component={Checkout} />

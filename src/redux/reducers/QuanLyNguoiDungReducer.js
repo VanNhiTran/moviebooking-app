@@ -3,6 +3,7 @@ import {
   LOGIN_ACTION,
   RENDER_USER_INFO,
   RENDER_USER_LIST,
+  SET_BOOKING_HISTORY,
 } from "../actions/types/QuanLyNguoiDungTypes";
 
 let user = {};
@@ -14,6 +15,7 @@ const stateDefault = {
   userLogin: user,
   userList: [],
   userInfo: [],
+  fullUserInfo: {},
 };
 
 export const QuanLyNguoiDungReducer = (state = stateDefault, action) => {
@@ -28,9 +30,14 @@ export const QuanLyNguoiDungReducer = (state = stateDefault, action) => {
       state.userList = action.userList;
       return { ...state };
     }
-    case RENDER_USER_INFO:
+    case RENDER_USER_INFO: {
       state.userInfo = action.userInfo;
       return { ...state };
+    }
+    case SET_BOOKING_HISTORY: {
+      state.fullUserInfo = action.fullUserInfo;
+      return { ...state };
+    }
     default:
       return { ...state };
   }

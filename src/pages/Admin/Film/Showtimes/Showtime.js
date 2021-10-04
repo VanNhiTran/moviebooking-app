@@ -32,7 +32,8 @@ export default function ShowTime(props) {
     heThongRapChieu: [],
     cumRapChieu: [],
   });
-  console.log(state.heThongRapChieu);
+  console.log("hethongrap", state.heThongRapChieu);
+  console.log(`cumRapChieu`, state.cumRapChieu);
 
   useEffect(async () => {
     try {
@@ -56,9 +57,7 @@ export default function ShowTime(props) {
     }
   };
 
-  const handleChangeCumRap = (value) => {
-    formik.setFieldValue("maRap", value);
-  };
+  const handleChangeCumRap = (value) => {};
 
   const onOk = (value) => {
     formik.setFieldValue("ngayChieuGioChieu", moment(value).format());
@@ -87,7 +86,6 @@ export default function ShowTime(props) {
       onSubmitCapture={formik.handleSubmit}
     >
       <h3 className="text-2xl">Tạo lịch chiếu </h3>
-      {/* <img src={film.hinhAnh} alt="..." width={200} height={100} /> */}
       <Form.Item label="Hệ thống rạp">
         <Select
           options={convertSelectHTR()}
@@ -106,7 +104,9 @@ export default function ShowTime(props) {
           placeholder="Chọn cụm rạp"
         />
       </Form.Item>
-
+      <Form.Item label="Rạp">
+        <Select options="" onChange="" placeholder="Chọn Rạp" />
+      </Form.Item>
       <Form.Item label="Ngày chiếu giờ chiếu">
         <DatePicker
           format="DD/MM/YYYY HH:mm:ss"
@@ -120,14 +120,13 @@ export default function ShowTime(props) {
         <InputNumber onChange={onchangeInputNumber} />
       </Form.Item>
       <Form.Item
-        label="Chức năng"
         style={{
           justifyContent: "space-around",
           width: "300px",
           margin: "auto",
         }}
       >
-        <Button htmlType="submit">Tạo lịch chiếu</Button>
+        <button type="submit">Tạo lịch chiếu</button>
       </Form.Item>
     </Form>
   );

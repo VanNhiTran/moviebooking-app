@@ -1,5 +1,7 @@
 import {
   CANCEL_BOOKING,
+  CHANGE_TAB,
+  CHANGE_TAB_ACTIVE,
   RENDER_CINEMAROOM_DETAIL,
   SELECT_SEAT,
 } from "../actions/types/QuanLyDatVeTypes";
@@ -7,6 +9,7 @@ import {
 const stateDefault = {
   cinemaRoomDetail: {},
   arrSelectingSeats: [],
+  activeKey: 1,
 };
 
 export const QuanLyDatVeReducer = (state = stateDefault, action) => {
@@ -33,6 +36,14 @@ export const QuanLyDatVeReducer = (state = stateDefault, action) => {
     case CANCEL_BOOKING: {
       console.log(`arrSelectingSeats`, state.arrSelectingSeats);
       return { ...state, arrSelectingSeats: [] };
+    }
+    case CHANGE_TAB: {
+      state.activeKey = 2;
+      return { ...state };
+    }
+    case CHANGE_TAB_ACTIVE: {
+      state.activeKey = 1;
+      return { ...state };
     }
     default:
       return { ...state };

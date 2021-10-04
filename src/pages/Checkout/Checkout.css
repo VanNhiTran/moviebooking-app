@@ -54,3 +54,44 @@
     background-color: wheat;
     color: rgb(177, 45, 45) !important
 }
+
+@media only screen and (max-width: 1279.99px) {
+    .seat{
+        margin: 7px
+    }
+}
+@media only screen and (max-width: 767.99px) {
+    .seat{
+        margin: 5px
+    }
+}
+
+
+@media only screen and (max-width: 650.990px) {
+    .seat{
+        margin: 3px;
+        height: 30px;
+        width: 30px;
+    }
+    button.seat {
+        font-size: 10px !important
+
+    }
+    .fa.fa-times{
+        font-size: 10px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .seat{
+        margin: 1px;
+        height: 23px;
+        width: 23px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .seat{
+        margin: 1px;
+        height: 20px;
+        width: 20px;
+    }
+}

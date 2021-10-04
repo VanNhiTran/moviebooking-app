@@ -104,19 +104,10 @@ function User() {
               }}
             >
               <DeleteFilled
-                className="mx-7"
+                className="ml-10"
                 style={{ color: "rgb(177, 45, 45)", fontSize: "25px" }}
               />
             </div>
-            <NavLink
-              to={"/admin/user/adduser"}
-              style={{ cursor: "pointer" }}
-              key={3}
-            >
-              <UserAddOutlined
-                style={{ color: "rgb(177, 45, 45)", fontSize: "25px" }}
-              />
-            </NavLink>
           </div>
         );
       },

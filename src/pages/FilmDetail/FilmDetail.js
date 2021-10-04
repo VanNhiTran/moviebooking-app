@@ -28,11 +28,13 @@ function FilmDetail(props) {
       <div>
         <div className=" flex justify-between pt-24 space-x-8 mx-auto items-center w-11/12 lg:w-8/12">
           <div className="flex-none">
-            <img
-              src={arrFilmDetail.hinhAnh}
-              alt=""
-              className="lg:h-72 lg:w-52 md:h-52 md:w-44 h-28 w-20 "
-            />
+            <div className="container">
+              <img
+                src={arrFilmDetail.hinhAnh}
+                alt=""
+                className="lg:h-72 lg:w-52 md:h-52 md:w-44 h-28 w-20"
+              />
+            </div>
           </div>
           <div className="flex-1">
             <h1>{arrFilmDetail.tenPhim}</h1>
@@ -107,6 +109,7 @@ function FilmDetail(props) {
             <div className="text text-center">
               <img
                 src={cinemaSystem.logo}
+                alt=""
                 className="rounded-full sm:w-12 w-8 m-auto"
               />
               {cinemaSystem.tenHeThongRap}
@@ -165,9 +168,9 @@ function FilmDetail(props) {
       <CustomCard
         effectColor=""
         // required
-        color="#14AEFF" // default color is white
-        blur={20} // default blur value is 10px
-        borderRadius={0} // default border radius value is 10px
+        color="#14AEFF"
+        blur={20}
+        borderRadius={0}
       >
         {renderFilmInfo()}
         <div className="lg:w-4/5 w-11/12 mx-auto">

@@ -30,6 +30,9 @@ export class QuanLyNguoiDungService extends BaseService {
   deleteUser = (taiKhoan) => {
     return this.delete(`api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`);
   };
+  getFullUserInfo = (taiKhoan) => {
+    return this.post(`api/QuanLyNguoiDung/ThongTinTaiKhoan`, taiKhoan);
+  };
 }
 
 export const quanLyNguoiDungService = new QuanLyNguoiDungService();

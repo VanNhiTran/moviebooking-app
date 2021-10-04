@@ -92,6 +92,7 @@ function Film() {
               onClick={() => {
                 if (window.confirm("Bạn có muốn xoá phim?")) {
                   dispatch(deleteFilmAction(film.maPhim));
+                  window.location.reload();
                 }
               }}
             >

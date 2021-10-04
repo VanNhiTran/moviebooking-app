@@ -29,7 +29,7 @@ function EditFilm(props) {
       tenPhim: filmInfo.tenPhim,
       trailer: filmInfo.trailer,
       moTa: filmInfo.moTa,
-      ngayKhoiChieu: filmInfo.ngayKhoiChieu,
+      ngayKhoiChieu: moment(filmInfo.ngayKhoiChieu).toISOString(),
       danhGia: filmInfo.danhGia,
       hinhAnh: null,
       maNhom: filmInfo.maNhom,
