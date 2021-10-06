@@ -29,11 +29,13 @@ function FilmDetail(props) {
         <div className=" flex justify-between pt-24 space-x-8 mx-auto items-center w-11/12 lg:w-8/12">
           <div className="flex-none">
             <div className="container">
-              <img
-                src={arrFilmDetail.hinhAnh}
-                alt=""
-                className="lg:h-72 lg:w-52 md:h-52 md:w-44 h-28 w-20"
-              />
+              <a href={arrFilmDetail.trailer} target="_blank">
+                <img
+                  src={arrFilmDetail.hinhAnh}
+                  alt=""
+                  className="lg:h-72 lg:w-52 md:h-52 md:w-44 h-28 w-20"
+                />
+              </a>
             </div>
           </div>
           <div className="flex-1">

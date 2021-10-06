@@ -4,10 +4,12 @@ import ImgKM2 from "../../assets/img/KM2.jpeg";
 
 function News() {
   return (
-    <div className="w-9/12 m-auto py-32 text-center">
+    <div className="w-9/12 m-auto py-28 text-center">
       <h1
-        className="font-bold pb-12"
-        style={{ color: "white", fontSize: "30px" }}
+        className="font-bold pb-12 md:text-3xl text-xl"
+        style={{
+          color: "white",
+        }}
       >
         TIN TỨC KHUYẾN MÃI
       </h1>
@@ -16,12 +18,7 @@ function News() {
         style={{ color: "wheat" }}
       >
         <div className="">
-          <img
-            src={ImgKM}
-            alt=""
-            className=" lg:h-64 md:h-56 sm:h-40 h-24"
-            // style={{ height: "250px", width: "500px" }}
-          />
+          <img src={ImgKM} alt="" className=" lg:h-64 md:h-56 sm:h-40 h-24" />
           <div className="sm:h-18 h-20 pt-5">
             <h1
               className="md:text-lg sm:text-base text-xs"
@@ -37,12 +34,7 @@ function News() {
           </span>
         </div>
         <div>
-          <img
-            src={ImgKM2}
-            alt=""
-            className=" lg:h-64 md:h-56 sm:h-40 h-24 "
-            // style={{ height: "250px", width: "500px" }}
-          />
+          <img src={ImgKM2} alt="" className=" lg:h-64 md:h-56 sm:h-40 h-24 " />
           <div className="sm:h-18 h-20 pt-5">
             <h1
               className="md:text-lg sm:text-base text-xs"

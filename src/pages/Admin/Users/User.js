@@ -9,16 +9,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import {
   deleteUserAction,
+  getUserInfoAction,
   getUserListAction,
 } from "../../../redux/actions/QuanLyNguoiDungAction";
-import { deleteFilmAction } from "../../../redux/actions/QuanLyPhimAction";
 const { Search } = Input;
 
 function User() {
   const dispatch = useDispatch();
 
   const { userList } = useSelector((state) => state.QuanLyNguoiDungReducer);
-
+  console.log(`userList`, userList);
   useEffect(() => {
     dispatch(getUserListAction());
   }, []);
@@ -122,7 +122,7 @@ function User() {
 
   const onSearch = (value) => {
     console.log(`value`, value);
-    dispatch();
+    dispatch(getUserListAction(value));
   };
 
   return (
@@ -134,7 +134,7 @@ function User() {
         <NavLink to="/admin/film/addfilm">Thêm người dùng</NavLink>
       </button>
       <Search
-        placeholder="Nhập tên, email, SĐT,... người dùng muốn tìm"
+        placeholder="Nhập tên người dùng muốn tìm"
         allowClear
         enterButton
         size="large"

@@ -1,9 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { GROUPID } from "../../util/settings/config";
 import "./CardFilm.css";
-
-// import "./CardFilm.module.css";
 
 function CardFilm(props) {
   const { film } = props;

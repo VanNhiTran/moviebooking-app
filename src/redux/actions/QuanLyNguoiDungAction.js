@@ -36,10 +36,10 @@ export const getFullUserInfoAction = (taiKhoan) => {
     }
   };
 };
-export const getUserListAction = () => {
+export const getUserListAction = (taiKhoan = "") => {
   return async (dispatch) => {
     try {
-      const res = await quanLyNguoiDungService.getUserList();
+      const res = await quanLyNguoiDungService.getUserList(taiKhoan);
       dispatch({
         type: RENDER_USER_LIST,
         userList: res.data,

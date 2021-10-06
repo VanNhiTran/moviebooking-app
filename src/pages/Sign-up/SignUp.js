@@ -81,10 +81,6 @@ function SignUp() {
               }
             />
           </Form.Item>
-
-          {/* <Form.Item label="Mật khẩu">
-            <Input name="matKhau" onChange={formik.handleChange} />
-          </Form.Item> */}
           <Form.Item label="Họ và tên">
             <Input name="hoTen" onChange={formik.handleChange} />
           </Form.Item>

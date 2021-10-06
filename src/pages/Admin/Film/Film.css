@@ -2,10 +2,15 @@
     color: black !important
     
 }
-.ant-form-item-label > label {
+
+.ant-form-item-label > label, 
+.ant-picker-header button {
     color: black !important
     ;
 }
-.ant-picker-header button{
-    background-color: rgb(177, 45, 45);
+.ant-pagination-prev button,
+.ant-pagination-next button
+{
+    color: #000 !important;
+    background-color: rgb(177, 45, 45) !important;
 }

@@ -1,5 +1,5 @@
 import { Tabs, Radio, Space } from "antd";
-// import "./HomeMenu.css";
+import { RightOutlined } from "@ant-design/icons";
 
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -85,7 +85,16 @@ export default function HomeMenu(props) {
                           />
                         </div>
                         <div className="">
-                          <h3 style={{ color: "wheat" }}>{film.tenPhim}</h3>
+                          <NavLink to={`/detail/${film.maPhim}`}>
+                            <h3 style={{ color: "wheat" }}>
+                              {film.tenPhim}
+                              <span style={{ textDecorationLine: "underline" }}>
+                                <RightOutlined className="text-xs px-2" />
+                                chi tiết phim
+                              </span>
+                            </h3>
+                          </NavLink>
+
                           <div className=" grid lg:grid-cols-8 md:grid-cols-6 sm:grid-cols-3 grid-cols-2 gap-3 sm:gap-5">
                             {film.lstLichChieuTheoPhim.map(
                               (schedule, index) => {
@@ -117,8 +126,8 @@ export default function HomeMenu(props) {
   };
   return (
     <div
-      className="xl:w-9/12 lg:w-11/12 w-full mx-2 lg:mx-32"
-      style={{ margin: "auto" }}
+      className="xl:w-9/12 lg:w-11/12 w-full mx-2 lg:mx-32 mt-16"
+      style={{ margin: " 40px auto" }}
     >
       <Tabs tabPosition="left">{renderCinema()}</Tabs>
     </div>

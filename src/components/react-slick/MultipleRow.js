@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import styleSlick from "./MultipleRows.module.css";
 import "./MultipleRows.module.css";
-// import "./multicss2.css";
 import CardFilm from "../films/CardFilm";
 import { useDispatch } from "react-redux";
 import {
@@ -32,10 +31,6 @@ function SamplePrevArrow(props) {
   );
 }
 const MultipleRows = (props) => {
-  const arrFilmFilter = props.arrFilm.filter(
-    (film) => new Date(film.ngayKhoiChieu) > new Date("2021-08-01T00:00:00.713")
-  );
-
   const dispatch = useDispatch();
   const renderMovieCard = () => {
     return props.arrFilm.map((film, index) => {

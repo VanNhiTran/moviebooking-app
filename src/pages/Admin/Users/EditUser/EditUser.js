@@ -96,7 +96,7 @@ function EditUser(props) {
         />
       </Form.Item>
 
-      <Form.Item label="Mã loại người dùng">
+      <Form.Item label="Loại người dùng">
         <Select
           style={{ width: 120 }}
           onChange={handleChangeSelect}

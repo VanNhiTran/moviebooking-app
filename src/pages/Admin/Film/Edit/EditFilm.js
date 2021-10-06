@@ -36,8 +36,6 @@ function EditFilm(props) {
     },
 
     onSubmit: (values) => {
-      console.log(`values.ngayKhoiChieu`, values.ngayKhoiChieu);
-      console.log(`values`, values);
       let formData = new FormData();
       for (let key in values) {
         if (key !== "hinhAnh") {
@@ -54,7 +52,6 @@ function EditFilm(props) {
 
   const handleChangeDate = (value) => {
     formik.setFieldValue("ngayKhoiChieu", moment(value).format());
-    console.log(`valueDate`, value);
   };
 
   const handleInputNumber = (name) => {

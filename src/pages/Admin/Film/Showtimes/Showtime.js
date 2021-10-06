@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, Button, Checkbox, Select } from "antd";
-import { Cascader } from "antd";
+import { Form, Select } from "antd";
 import { DatePicker } from "antd";
 import { InputNumber } from "antd";
 import { quanLyRapService } from "../../../../services/QuanLyRapService";
 import { useFormik } from "formik";
 import moment from "moment";
 import { quanLyDatVeService } from "../../../../services/QuanLyDatVeService";
+import { history } from "../../../../App";
+const { Option } = Select;
 
 export default function ShowTime(props) {
   const formik = useFormik({
@@ -17,11 +18,13 @@ export default function ShowTime(props) {
       giaVe: "",
     },
     onSubmit: async (values) => {
+      console.log(`values.maPhim`, values.maPhim);
       console.log("values", values);
       try {
         const result = await quanLyDatVeService.addShowtimes(values);
 
         alert(result.data);
+        history.goBack();
       } catch (error) {
         console.log("error", error.response?.data);
       }
@@ -30,10 +33,12 @@ export default function ShowTime(props) {
 
   const [state, setState] = useState({
     heThongRapChieu: [],
-    cumRapChieu: [],
+    DSCumRapChieu: [],
+    maCumRap: "",
   });
   console.log("hethongrap", state.heThongRapChieu);
-  console.log(`cumRapChieu`, state.cumRapChieu);
+  console.log(`cumRapChieu`, state.DSCumRapChieu);
+  console.log(`maCumRap`, state.maCumRap);
 
   useEffect(async () => {
     try {
@@ -50,24 +55,44 @@ export default function ShowTime(props) {
       let result = await quanLyRapService.getCinemaSystemInfo(value);
       setState({
         ...state,
-        cumRapChieu: result.data,
+        DSCumRapChieu: result.data,
       });
     } catch (error) {
       console.log("error", error.response?.data);
     }
   };
 
-  const handleChangeCumRap = (value) => {};
+  const handleChangeCumRap = (value) => {
+    console.log(`value`, value);
+    setState({
+      ...state,
+      maCumRap: value,
+    });
+  };
 
-  const onOk = (value) => {
-    formik.setFieldValue("ngayChieuGioChieu", moment(value).format());
-    console.log("values", moment(value).format());
+  const renderRap = () => {
+    return state.DSCumRapChieu.map((rap, index) => {
+      if (rap.maCumRap === state.maCumRap) {
+        return rap.danhSachRap.map((room, index) => {
+          return <Option value={room.maRap}>{room.tenRap}</Option>;
+        });
+      }
+    });
+  };
+
+  const handleChangeRap = (value) => {
+    formik.setFieldValue("maRap", value);
+    console.log(`maRap`, value);
   };
 
   const onChangeDate = (value) => {
-    formik.setFieldValue("ngayChieuGioChieu", moment(value).format());
-    console.log("values", moment(value).format());
+    formik.setFieldValue(
+      "ngayChieuGioChieu",
+      moment(value).format("DD/MM/YYYY hh:mm:ss")
+    );
+    console.log("values", moment(value).format("DD/MM/YYYY hh:mm:ss"));
   };
+
   const onchangeInputNumber = (value) => {
     formik.setFieldValue("giaVe", value);
   };
@@ -96,7 +121,7 @@ export default function ShowTime(props) {
 
       <Form.Item label="Cụm rạp">
         <Select
-          options={state.cumRapChieu?.map((cumRap, index) => ({
+          options={state.DSCumRapChieu?.map((cumRap, index) => ({
             label: cumRap.tenCumRap,
             value: cumRap.maCumRap,
           }))}
@@ -105,14 +130,15 @@ export default function ShowTime(props) {
         />
       </Form.Item>
       <Form.Item label="Rạp">
-        <Select options="" onChange="" placeholder="Chọn Rạp" />
+        <Select placeholder="Chọn Rạp" onChange={handleChangeRap}>
+          {renderRap()}
+        </Select>
       </Form.Item>
       <Form.Item label="Ngày chiếu giờ chiếu">
         <DatePicker
           format="DD/MM/YYYY HH:mm:ss"
           showTime
           onChange={onChangeDate}
-          onOk={onOk}
         />
       </Form.Item>
 

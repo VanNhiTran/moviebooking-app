@@ -57,7 +57,7 @@ const AdminTemplate = (props) => {
               }}
               className="text-l rounded-full bg-red-200 mr-3"
             >
-              {userLogin.taiKhoan.substr(0, 1)}
+              {userLogin.taiKhoan.substr(0, 1).toUpperCase()}
             </div>
             <span>Hello ! {userLogin.taiKhoan}</span>
           </button>

@@ -24,6 +24,7 @@ import { NavLink } from "react-router-dom";
 import { history } from "../../App";
 import { getFullUserInfoAction } from "../../redux/actions/QuanLyNguoiDungAction";
 import moment from "moment";
+import { Alert } from "antd";
 
 function Checkout(props) {
   const { cinemaRoomDetail, arrSelectingSeats } = useSelector(
@@ -122,7 +123,7 @@ function Checkout(props) {
             </table>
           </div>
         </div>
-        <div className="lg:col-span-3 lg:mt-0 lg:px-0 col-span-12  mt-10 px-20">
+        <div className="lg:col-span-3 lg:mt-0 lg:px-0 col-span-12  mt-10 px-10">
           <h3 className="text-green-400 text-center text-4xl">
             TỔNG TIỀN:{" "}
             {arrSelectingSeats?.reduce((total, seat, index) => {
@@ -153,7 +154,10 @@ function Checkout(props) {
                 {_.sortBy(arrSelectingSeats, ["stt"]).map(
                   (selectingSeat, index) => {
                     return (
-                      <span key={index} className="text text-wheat text-lg">
+                      <span
+                        key={index}
+                        className="text text-wheat md:text-lg text-base pl-3"
+                      >
                         {selectingSeat.stt}
                       </span>
                     );
@@ -176,8 +180,16 @@ function Checkout(props) {
           <div className="items-center" style={{ marginBottom: 0 }}>
             <div
               onClick={() => {
-                if (arrSelectingSeats === []) {
-                  alert("Vui lòng chọn ghế");
+                if (arrSelectingSeats.length === 0) {
+                  return (
+                    <Alert
+                      message="Warning"
+                      description="This is a warning notice about copywriting."
+                      type="warning"
+                      showIcon
+                      closable
+                    />
+                  );
                 } else {
                   dispatch(
                     bookTicketInfoAction({
