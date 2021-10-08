@@ -31,7 +31,7 @@
 	margin: 15px;
 }
 .card_datails  h1 {
-	font-size: 15px;
+	font-size: 14px !important;
 	margin-bottom: 0;
 	font-weight: bold;
 }
@@ -151,5 +151,29 @@ button:hover {
     transform: scale(1.8);
     -webkit-transform: scale(2);
     opacity: 0;
+		}
+}
+
+@media screen and (max-width:  620px) {
+	.main_card{
+
+		height: 220px;
+		width: 330px;
+	}
+	.card_right img {
+		height: 220px;}
+}
+@media screen and (max-width:  450px) {
+	.main_card{
+
+		height: 180px;
+		width: 200px;
+	}
+	.card_right img {
+		height: 180px
+	}
+	.disc {
+		visibility: hidden;
+		height: 0;
 		}
 }

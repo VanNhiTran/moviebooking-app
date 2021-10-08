@@ -27,7 +27,7 @@ export default function HomeCarousel() {
     });
   };
   return (
-    <Carousel effect="fade" autoplay={false}>
+    <Carousel effect="fade" autoplay={true}>
       {renderCarousel()}
     </Carousel>
   );

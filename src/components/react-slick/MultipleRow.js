@@ -57,7 +57,7 @@ const MultipleRows = (props) => {
     prevArrow: <SamplePrevArrow />,
     responsive: [
       {
-        breakpoint: 668,
+        breakpoint: 1024,
         settings: {
           rows: 1,
           slidesToShow: 1,

@@ -6,6 +6,7 @@ import {
   RENDER_USER_LIST,
   SET_BOOKING_HISTORY,
 } from "./types/QuanLyNguoiDungTypes";
+import { Alert } from "antd";
 
 export const LoginAction = (loginInfo) => {
   return async (dispatch) => {
@@ -17,7 +18,8 @@ export const LoginAction = (loginInfo) => {
       });
       history.goBack();
     } catch (error) {
-      console.log(error);
+      console.log(error.response?.data);
+      alert("Tài khoản hoặc mật khẩu không đúng!");
     }
   };
 };
