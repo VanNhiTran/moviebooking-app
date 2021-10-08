@@ -1,9 +1,5 @@
 /*! tailwindcss v2.2.16 | MIT License | https://tailwindcss.com */
 
-<<<<<<< HEAD
-=======
-/*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
-
 /*
 Document
 ========
@@ -57,10 +53,8 @@ body {
 Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
 */
 
->>>>>>> bf64276d32f23f2ad8c5e9209314fcfeb9994b29
 body {
   font-family:
-		system-ui,
 		-apple-system, /* Firefox supports this but not yet `system-ui` */
 		'Segoe UI',
 		Roboto,
@@ -346,10 +340,10 @@ pre {
   margin: 0;
 }
 
-button {
+/* button {
   background-color: transparent;
   background-image: none;
-}
+} */
 
 fieldset {
   margin: 0;

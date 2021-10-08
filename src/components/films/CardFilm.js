@@ -31,16 +31,16 @@ function CardFilm(props) {
             </p>
 
             <div className="social-btn">
-              <button>
+              <button className="btn-card">
                 <a href={film.trailer} target="_blank">
                   <i className="fas fa-play" /> SEE TRAILER
                 </a>
               </button>
 
-              <button>
+              <button className="btn-card">
                 <i className="fas fa-star unactive" />
               </button>
-              <button>
+              <button className="btn-card">
                 <NavLink to={`/detail/${film.maPhim}`}>
                   <i className="fa fa-ticket-alt" /> ĐẶT VÉ
                 </NavLink>

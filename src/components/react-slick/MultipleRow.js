@@ -70,7 +70,7 @@ const MultipleRows = (props) => {
     <div className="">
       <div className="m-auto w-2/3 text text-center">
         <button
-          className="mx-5"
+          className="mx-5 btn-card"
           onClick={() => {
             const action = {
               type: RENDER_NOWSHOWING_FILM,
@@ -82,6 +82,7 @@ const MultipleRows = (props) => {
           ĐANG CHIẾU
         </button>
         <button
+          className="btn-card"
           onClick={() => {
             const action = {
               type: RENDER_COMINGSOON_FILM,

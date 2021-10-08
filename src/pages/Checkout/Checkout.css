@@ -8,6 +8,7 @@
     margin: 10px;
     background-color: #6b6161 ;
     color: #fff;
+    font-size: 12px;
 }
 
 .bookedSeat {
@@ -52,7 +53,9 @@
 .btnlogOut{
     margin-left: 20px;
     background-color: wheat;
-    color: rgb(177, 45, 45) !important
+    color: rgb(177, 45, 45) !important;
+    padding: 5px 10px;
+    border-radius: 12px;
 }
 
 @media only screen and (max-width: 1279.99px) {

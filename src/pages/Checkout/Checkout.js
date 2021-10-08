@@ -181,15 +181,7 @@ function Checkout(props) {
             <div
               onClick={() => {
                 if (arrSelectingSeats.length === 0) {
-                  return (
-                    <Alert
-                      message="Warning"
-                      description="This is a warning notice about copywriting."
-                      type="warning"
-                      showIcon
-                      closable
-                    />
-                  );
+                  alert("Vui lòng chọn ghế");
                 } else {
                   dispatch(
                     bookTicketInfoAction({
@@ -319,7 +311,7 @@ function BookingResult(props) {
         </div>
       </div>
       <button
-        className="mb-12"
+        className="mb-12 btn-card"
         onClick={() => {
           dispatch({ type: CHANGE_TAB_ACTIVE });
         }}
@@ -357,7 +349,7 @@ export default function (props) {
 
   const operations = (
     <Fragment>
-      <button>Hi</button>
+      <button className="btn-card">Hi</button>
       <button
         onSubmit={(e) => {
           e.preventDefault();
