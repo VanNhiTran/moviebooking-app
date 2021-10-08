@@ -6,7 +6,7 @@ import bgImg from "../../assets/img/BG.png";
 import desk from "../../assets/img/desk2.png";
 import logo from "../../assets/img/logo.png";
 import { useDispatch, useSelector } from "react-redux";
-import "../css/checkout.css";
+import "./css/checkout.css";
 import {
   bookTicketInfoAction,
   getCinemaRoomDetailAction,
