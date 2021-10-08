@@ -2,14 +2,13 @@ import React, { Fragment, useEffect } from "react";
 import { Table } from "antd";
 // import "./Film.css";
 import { Input } from "antd";
-import { EditFilled, DeleteFilled, UserAddOutlined } from "@ant-design/icons";
+import { EditFilled, DeleteFilled } from "@ant-design/icons";
 
 import { useDispatch, useSelector } from "react-redux";
 
 import { NavLink } from "react-router-dom";
 import {
   deleteUserAction,
-  getUserInfoAction,
   getUserListAction,
 } from "../../../redux/actions/QuanLyNguoiDungAction";
 const { Search } = Input;

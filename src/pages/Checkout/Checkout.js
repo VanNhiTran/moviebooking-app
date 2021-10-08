@@ -24,7 +24,6 @@ import { NavLink } from "react-router-dom";
 import { history } from "../../App";
 import { getFullUserInfoAction } from "../../redux/actions/QuanLyNguoiDungAction";
 import moment from "moment";
-import { Alert } from "antd";
 
 function Checkout(props) {
   const { cinemaRoomDetail, arrSelectingSeats } = useSelector(
