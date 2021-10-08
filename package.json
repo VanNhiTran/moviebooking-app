@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "react-scripts build",
+    "build": "CI= react-scripts build",
     "test": "craco test",
     "eject": "react-scripts eject",
     "build-prod": "npx tailwindcss build src/tailwind.css -o src/index.css && react-scripts build"
