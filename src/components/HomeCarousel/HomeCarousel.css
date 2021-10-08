@@ -5,4 +5,8 @@
 .slick-dots li button:before {
     content: none !important;
 }
+.ant-carousel .slick-dots li button{
+    color: transparent !important
+    
+}
 
