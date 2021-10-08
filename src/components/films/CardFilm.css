@@ -89,8 +89,9 @@ a {
 button {
 	color: #fff;
 	/* border: 2px solid rgb(221, 64, 64); */
-	background-color: rgb(177, 45, 45);
-	padding: 5px 10px;
+	background-color: rgb(177, 45, 45) !important;
+	padding: 5px 10px !important
+	;
 	outline: none;
 	font-size: 12px !important;
 	margin: 8px 0;

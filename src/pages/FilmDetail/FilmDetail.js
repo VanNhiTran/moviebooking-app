@@ -52,9 +52,9 @@ function FilmDetail(props) {
           </div>
           <div>
             <div
-              className={`flex-none w-36 c100 p${
+              className={`flex-none  c100 p${
                 arrFilmDetail.danhGia * 10
-              } small md:medium`}
+              } medium`}
             >
               <span>{arrFilmDetail.danhGia}</span>
               <div className="slice">
