@@ -126,13 +126,21 @@ function User() {
 
   return (
     <div className="m-8">
-      <h1 style={{ fontSize: "30px", fontWeight: 600, textAlign: "center" }}>
+      <h1
+        style={{
+          fontSize: "30px",
+          fontWeight: 600,
+          textAlign: "center",
+          color: "white",
+        }}
+      >
         QUẢN LÝ NGƯỜI DÙNG
       </h1>
-      <button className="mb-7">
+      <button className="mb-7 mr-5">
         <NavLink to="/admin/film/addfilm">Thêm người dùng</NavLink>
       </button>
       <Search
+        className="mb-7"
         placeholder="Nhập tên người dùng muốn tìm"
         allowClear
         enterButton

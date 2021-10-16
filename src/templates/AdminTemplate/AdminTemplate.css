@@ -1,0 +1,37 @@
+/* .ant-layout-sider, .ant-layout-sider-trigger, .ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-inline.ant-menu-sub  {
+    background-color: white;
+}
+.ant-menu.ant-menu-dark{
+    color:black
+
+}
+.ant-layout-header{
+    background-color: #fff;
+}
+.ant-menu-dark .ant-menu-submenu-selected, .ant-menu-dark .ant-menu-inline.ant-menu-sub, .ant-menu-dark .ant-menu-item {
+    
+    color:  black
+} */
+/* .ant-layout-content{
+    background: url(../../assets/img//BG.png);
+    background-position: center;
+    background-size: contain;
+    margin: 0 !important;
+} */
+.ant-table-container {
+    background: url(../../assets/img//BG.png);
+    background-position: center;
+    background-size: contain;
+    color: white
+
+
+}
+.ant-table-tbody > tr.ant-table-row:hover {
+    color: black;
+}
+.ant-layout-content {
+
+    background: #001529;
+    margin: 0 !important
+    ;
+}

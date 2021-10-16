@@ -129,13 +129,21 @@ function Film() {
 
   return (
     <div className="m-8">
-      <h1 style={{ fontSize: "30px", fontWeight: 600, textAlign: "center" }}>
+      <h1
+        style={{
+          fontSize: "30px",
+          fontWeight: 600,
+          textAlign: "center",
+          color: "white",
+        }}
+      >
         QUẢN LÝ PHIM
       </h1>
-      <button className="mb-7">
+      <button className="mb-7 self-center px-8 py-3 rounded">
         <NavLink to="/admin/film/addfilm">Thêm phim mới</NavLink>
       </button>
       <Search
+        className="mb-7"
         placeholder="Nhập mã phim, tên phim, từ khoá phim muốn tìm"
         allowClear
         enterButton

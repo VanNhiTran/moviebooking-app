@@ -106,11 +106,20 @@ export default function ShowTime(props) {
   return (
     <Form
       name="basic"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
+      labelCol={{ span: 4 }}
+      wrapperCol={{ span: 14 }}
       onSubmitCapture={formik.handleSubmit}
     >
-      <h3 className="text-2xl">Tạo lịch chiếu </h3>
+      <h1
+        style={{
+          fontSize: "30px",
+          fontWeight: 600,
+          textAlign: "center",
+          color: "white",
+        }}
+      >
+        Tạo lịch chiếu
+      </h1>
       <Form.Item label="Hệ thống rạp">
         <Select
           options={convertSelectHTR()}

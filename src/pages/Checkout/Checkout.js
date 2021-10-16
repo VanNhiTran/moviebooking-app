@@ -14,7 +14,6 @@ import {
 import "./Checkout.css";
 import {
   CANCEL_BOOKING,
-  CHANGE_TAB,
   CHANGE_TAB_ACTIVE,
   SELECT_SEAT,
 } from "../../redux/actions/types/QuanLyDatVeTypes";
@@ -84,10 +83,25 @@ function Checkout(props) {
     <div className="py-16 lg:px-10 px-1">
       <div className="grid grid-cols-12">
         <div className="lg:col-span-9 col-span-12 m-auto text-center">
-          <div className=" items-center">
-            <div>
+          <div className="text-left">
+            <h3
+              className="text-medium mt]-2 text-white pb-5"
+              // style={{ fontSize: "23px" }}
+            >
+              {thongTinPhim?.tenPhim?.toUpperCase()}
+            </h3>
+            <p>
+              ĐỊA ĐIỂM: {thongTinPhim?.tenCumRap} - {thongTinPhim?.diaChi}
+            </p>
+            <p>
+              NGÀY CHIẾU: {thongTinPhim?.ngayChieu} - {thongTinPhim?.gioChieu}
+            </p>
+          </div>
+          <div className="items-center">
+            <div className="md:w-full sm:w-11/12 w-9/12 m-auto">
               <img src={screenImg} alt="" />
             </div>
+
             <div className="mt-10">{renderSeats()}</div>
           </div>
 
@@ -269,6 +283,28 @@ function BookingResult(props) {
 
   return (
     <div className="wrapper">
+      <button
+        className="mb-12 btn-card"
+        onClick={() => {
+          dispatch({ type: CHANGE_TAB_ACTIVE });
+        }}
+      >
+        TIẾP TỤC ĐẶT VÉ...
+      </button>
+
+      <h1>THÔNG TIN ĐẶT VÉ</h1>
+      <div className="Rtable Rtable--5cols Rtable--collapse">
+        <div className="Rtable-row Rtable-row--head">
+          <div className="Rtable-cell date-cell column-heading">
+            Ngày đặt vé
+          </div>
+          <div className="Rtable-cell topic-cell column-heading">Tên phim</div>
+          <div className="Rtable-cell access-link-cell column-heading">Rạp</div>
+          <div className="Rtable-cell replay-link-cell column-heading">Ghế</div>
+          <div className="Rtable-cell pdf-cell column-heading">Giá vé</div>
+        </div>
+        {renderHistory()}
+      </div>
       <h1>THÔNG TIN NGƯỜI DÙNG</h1>
       <div className="Rtable Rtable--5cols Rtable--collapse">
         <div className="Rtable-row Rtable-row--head">
@@ -308,28 +344,6 @@ function BookingResult(props) {
             </div>
           </div>
         </div>
-      </div>
-      <button
-        className="mb-12 btn-card"
-        onClick={() => {
-          dispatch({ type: CHANGE_TAB_ACTIVE });
-        }}
-      >
-        TIẾP TỤC ĐẶT VÉ...
-      </button>
-
-      <h1>THÔNG TIN ĐẶT VÉ</h1>
-      <div className="Rtable Rtable--5cols Rtable--collapse">
-        <div className="Rtable-row Rtable-row--head">
-          <div className="Rtable-cell date-cell column-heading">
-            Ngày đặt vé
-          </div>
-          <div className="Rtable-cell topic-cell column-heading">Tên phim</div>
-          <div className="Rtable-cell access-link-cell column-heading">Rạp</div>
-          <div className="Rtable-cell replay-link-cell column-heading">Ghế</div>
-          <div className="Rtable-cell pdf-cell column-heading">Giá vé</div>
-        </div>
-        {renderHistory()}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { Select } from "antd";
 import { addUserAction } from "../../../../redux/actions/QuanLyNguoiDungAction";
 import { GROUPID } from "../../../../util/settings/config";
 import { useSelector } from "react-redux";
+import "./adduser.css";
 
 const { Option } = Select;
 
@@ -40,6 +41,7 @@ function AddUser() {
 
   return (
     <Form
+      className="text-white"
       labelCol={{
         span: 4,
       }}
@@ -49,7 +51,14 @@ function AddUser() {
       layout="horizontal"
       onSubmitCapture={formik.handleSubmit}
     >
-      <h1 style={{ fontSize: "30px", fontWeight: 600, textAlign: "center" }}>
+      <h1
+        style={{
+          fontSize: "30px",
+          fontWeight: 600,
+          textAlign: "center",
+          color: "white",
+        }}
+      >
         THÊM NGƯỜI DÙNG
       </h1>
       <Form.Item label="Tài khoản">

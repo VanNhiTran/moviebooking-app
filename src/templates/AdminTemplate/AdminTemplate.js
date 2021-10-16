@@ -14,6 +14,7 @@ import { NavLink } from "react-router-dom";
 import _ from "lodash";
 import { history } from "../../App";
 import logo from "../../assets/img/logo.png";
+import "./AdminTemplate.css";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -46,7 +47,10 @@ const AdminTemplate = (props) => {
     <Fragment>
       {!_.isEmpty(userLogin) ? (
         <Fragment>
-          <button className="flex " style={{ alignItems: "center" }}>
+          <button
+            className="flex self-center px-8 py-3 rounded"
+            style={{ alignItems: "center" }}
+          >
             <div
               style={{
                 width: 50,
@@ -55,7 +59,7 @@ const AdminTemplate = (props) => {
                 justifyContent: "center",
                 alignItems: "center",
               }}
-              className="text-l rounded-full bg-red-200 mr-3"
+              className="text-l rounded-full bg-red-200 mr-3 "
             >
               {userLogin.taiKhoan.substr(0, 1).toUpperCase()}
             </div>
@@ -69,7 +73,7 @@ const AdminTemplate = (props) => {
               window.location.reload();
             }}
             style={{ alignItems: "center" }}
-            className="text-blue-800 mx-5"
+            className="text-blue-800 mx-5 self-center px-8 py-3 rounded"
           >
             Đăng xuất
           </button>{" "}
@@ -86,7 +90,7 @@ const AdminTemplate = (props) => {
       render={(propsRoute) => {
         return (
           <Fragment>
-            <Layout style={{ minHeight: "100vh" }}>
+            <Layout style={{ minHeight: "100vh", backgroundColor: "white" }}>
               <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
                 <NavLink to="/" className="logo p-5">
                   <img src={logo} alt="..." />

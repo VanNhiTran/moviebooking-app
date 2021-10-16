@@ -4,6 +4,10 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../../../../assets/img/logo.png";
+import androidLogo from "../../../../assets/img/android-logo.png";
+import appleLogo from "../../../../assets/img/apple-logo.png";
+import zaloLogo from "../../../../assets/img/zalo-logo.png";
+import fbLogo from "../../../../assets/img/facebook-logo.png";
 import {
   getCinameInfoAction,
   getCinemaSystemListAction,
@@ -24,7 +28,7 @@ export default function Footer() {
   const renderArrCinema = () => {
     return arrCinema.map((cinema, index) => {
       return (
-        <a href="#" style={{ maxWidth: "40px" }} key={index}>
+        <a href="#" style={{ maxWidth: "30px" }} key={index}>
           <img className="rounded-full" src={cinema.logo} />
         </a>
       );
@@ -32,24 +36,45 @@ export default function Footer() {
   };
 
   return (
-    <footer className="py-6 bg-coolGray-800 text-coolGray-50 text-white bg-gray-900">
-      <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50 w-3/4">
-        <div className="grid grid-cols-12">
-          <div className="pb-6 col-span-full md:pb-0 md:col-span-4">
+    <footer
+      className="py-6 bg-coolGray-800 text-coolGray-50 text-white"
+      style={{ backgroundColor: "#222" }}
+    >
+      <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50 lg:w-3/4 w-10/11">
+        <div className="grid md:grid-cols-12 gap-y-5 grid-cols-2">
+          <div className="pb-6 md:pb-0 text-center md:col-span-2">
             <a
               href="#"
-              className="flex justify-center space-x-3 md:justify-start"
+              className="flex justify-center space-x-1 md:justify-start"
             >
               <div className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-violet-400 text-white">
                 <img src={logo} className="rounded-full w-20" />
               </div>
-              <span className="self-center text-2xl font-semibold text-white">
+              <span className="self-center text-xl font-semibold text-white">
                 MECI MOVIE
               </span>
             </a>
           </div>
+          <div className="text-center md:col-span-3">
+            <p className="pb-1 text-lg font-medium">Mobile App</p>
+            <div
+              className="flex flex-col-2 justify-center"
+              style={{ justifyContent: "center" }}
+            >
+              <img
+                src={androidLogo}
+                alt=""
+                style={{ height: "30px", margin: "5px" }}
+              />
+              <img
+                src={appleLogo}
+                alt=""
+                style={{ height: "30px", margin: "5px" }}
+              />
+            </div>
+          </div>
 
-          <div className="col-span-6 text-center md:text-left md:col-span-4">
+          <div className="text-center md:text-left md:col-span-3">
             <p className="pb-1 text-lg font-medium">Category</p>
             <ul>
               <li>
@@ -75,9 +100,11 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="col-span-6 text-center md:text-left md:col-span-3">
+          <div className="text-center md:text-left md:col-span-4">
             <p className="pb-1 text-lg font-medium">Đối tác của Meci</p>
-            <div className="grid grid-cols-2 gap-4 ">{renderArrCinema()}</div>
+            <div className="grid md:grid-cols-3 grid-cols-2 gap-2 justify-center  ">
+              {renderArrCinema()}
+            </div>
           </div>
         </div>
         <div
@@ -132,11 +159,10 @@ export default function Footer() {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.29462922458!2d106.94550441422524!3d10.788731461917944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31751f9232f42a8d%3A0xab2c4ff6191f09f8!2zUuG6oXAgQmV0YSBMb25nIFRow6BuaA!5e0!3m2!1svi!2s!4v1633162204577!5m2!1svi!2s"
               style={{ width: "100%", height: "300px" }}
               allowfullscreen
-              // loading="lazy"
             ></iframe>
           </div>
         </div>
-        <div className="grid justify-center pt-6 lg:justify-between">
+        <div className="grid justify-center  pt-6 lg:justify-between">
           <div
             className="flex space-x-4 justify-center"
             style={{ alignItems: "center" }}
@@ -150,7 +176,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
+          <div className="flex justify-center items-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
             <a
               href="#"
               className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-violet-400 text-white dark:text-coolGray-900"
@@ -190,6 +216,18 @@ export default function Footer() {
               >
                 <path d="M10.9,2.1c-4.6,0.5-8.3,4.2-8.8,8.7c-0.5,4.7,2.2,8.9,6.3,10.5C8.7,21.4,9,21.2,9,20.8v-1.6c0,0-0.4,0.1-0.9,0.1 c-1.4,0-2-1.2-2.1-1.9c-0.1-0.4-0.3-0.7-0.6-1C5.1,16.3,5,16.3,5,16.2C5,16,5.3,16,5.4,16c0.6,0,1.1,0.7,1.3,1c0.5,0.8,1.1,1,1.4,1 c0.4,0,0.7-0.1,0.9-0.2c0.1-0.7,0.4-1.4,1-1.8c-2.3-0.5-4-1.8-4-4c0-1.1,0.5-2.2,1.2-3C7.1,8.8,7,8.3,7,7.6C7,7.2,7,6.6,7.3,6 c0,0,1.4,0,2.8,1.3C10.6,7.1,11.3,7,12,7s1.4,0.1,2,0.3C15.3,6,16.8,6,16.8,6C17,6.6,17,7.2,17,7.6c0,0.8-0.1,1.2-0.2,1.4 c0.7,0.8,1.2,1.8,1.2,3c0,2.2-1.7,3.5-4,4c0.6,0.5,1,1.4,1,2.3v2.6c0,0.3,0.3,0.6,0.7,0.5c3.7-1.5,6.3-5.1,6.3-9.3 C22,6.1,16.9,1.4,10.9,2.1z" />
               </svg>
+            </a>
+            <a
+              href="#"
+              className="flex items-center justify-center w-5 h-5 rounded-full dark:bg-violet-400 text-white dark:text-coolGray-900"
+            >
+              <img src={zaloLogo} alt="" />
+            </a>
+            <a
+              href="#"
+              className="flex items-center justify-center w-5 h-5 rounded-full dark:bg-violet-400 text-white dark:text-coolGray-900"
+            >
+              <img src={fbLogo} alt="" />
             </a>
           </div>
         </div>

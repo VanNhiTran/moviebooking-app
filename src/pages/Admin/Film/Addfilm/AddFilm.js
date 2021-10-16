@@ -75,7 +75,14 @@ function AddFilm(props) {
       layout="horizontal"
       onSubmitCapture={formik.handleSubmit}
     >
-      <h1 style={{ fontSize: "30px", fontWeight: 600, textAlign: "center" }}>
+      <h1
+        style={{
+          fontSize: "30px",
+          fontWeight: 600,
+          textAlign: "center",
+          color: "white",
+        }}
+      >
         THÊM PHIM
       </h1>
       <Form.Item label="Tên phim">

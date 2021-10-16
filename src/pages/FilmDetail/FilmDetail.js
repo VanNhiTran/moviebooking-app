@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import bg from "../../assets/img/BG.png";
 import hinh1 from "../../assets/img/popcorn.jpeg";
 // import "../css/DetailFilm.css";
 import { Rate, Tabs } from "antd";
@@ -26,7 +27,7 @@ function FilmDetail(props) {
   const renderFilmInfo = () => {
     return (
       <div>
-        <div className=" flex justify-between pt-24 space-x-8 mx-auto items-center w-11/12 lg:w-8/12">
+        <div className=" flex justify-between pt-24 space-x-8 mx-auto w-11/12 lg:w-8/12">
           <div className="flex-none">
             <div className="container">
               <a href={arrFilmDetail.trailer} target="_blank">
@@ -34,23 +35,41 @@ function FilmDetail(props) {
                   src={arrFilmDetail.hinhAnh}
                   alt=""
                   className="lg:h-72 lg:w-52 md:h-52 md:w-44 h-28 w-20"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = `https://picsum.photos/seed/picsum/50/50`;
+                  }}
                 />
               </a>
             </div>
           </div>
-          <div className="flex-1">
-            <h1>{arrFilmDetail.tenPhim}</h1>
-            <h3>
+          <div className="md:flex-1 ">
+            <h1 className="md:text-2xl text-large" style={{ color: "white" }}>
+              {arrFilmDetail.tenPhim?.toUpperCase()}
+            </h1>
+            <h2
+              style={{ color: "#8f8f8f" }}
+              className="md:text-large md:leading-8 my-3 leading-5 text-sm"
+            >
+              {arrFilmDetail.moTa}{" "}
+            </h2>
+            <h3 style={{ color: "white" }}>
               {" "}
               Ngày khởi chiếu:{" "}
               {moment(arrFilmDetail.ngayKhoiChieu).format("DD-MM-YYYY")}
             </h3>
-            <button className="w-26">
+            <button className="px-4 py-1 self-center md:px-8 md:py-3 rounded">
+              {" "}
+              <a href={arrFilmDetail.trailer} target="_blank">
+                TRAILER
+              </a>
+            </button>
+            <button className="px-4 py-1 mt-12 self-center md:px-8 md:py-3 rounded">
               {" "}
               <a href="#tabPhim">MUA VÉ NGAY</a>
             </button>
           </div>
-          <div>
+          {/* <div>
             <div
               className={`flex-none  c100 p${
                 arrFilmDetail.danhGia * 10
@@ -73,32 +92,7 @@ function FilmDetail(props) {
               <h1>Đánh giá</h1>
             </div>
           </div>
-        </div>
-        <div className="md:w-1/2 w-11/12 mx-auto my-20">
-          <h1
-            style={{
-              textAlign: "center",
-              fontWeight: "700",
-              fontSize: "22px",
-            }}
-          >
-            THÔNG TIN
-          </h1>
-          <div className="flex">
-            <div className="flex-none w-14 md:mr-20 mr-0" style={{}}>
-              <h2>Nội dung:</h2>
-            </div>
-            <div
-              className="flex-auto"
-              style={{
-                lineHeight: "25px",
-                textAlign: "justify",
-                color: "white",
-              }}
-            >
-              {arrFilmDetail.moTa}
-            </div>
-          </div>
+         */}
         </div>
       </div>
     );
@@ -128,7 +122,10 @@ function FilmDetail(props) {
                       className="lg:w-44 md:w-36 sm-24 w-16"
                       style={{ whiteSpace: "normal" }}
                     >
-                      <h1 className="lg:text-base text-xs">
+                      <h1
+                        className="lg:text-base text-xs"
+                        style={{ color: "wheat" }}
+                      >
                         {cinema.tenCumRap}
                       </h1>
                     </div>
@@ -160,14 +157,25 @@ function FilmDetail(props) {
   return (
     <section
       style={{
-        background: `url(${hinh1})`,
+        background: `url(${bg})`,
         backgroundPosition: "center",
         backgroundSize: "contain",
         height: "100%",
         width: "100%",
       }}
     >
-      <CustomCard
+      {renderFilmInfo()}
+      <div className="lg:w-4/5 w-11/12 mx-auto mt-12">
+        <Tabs
+          id="tabPhim"
+          centered
+          style={{ margin: "auto" }}
+          tabPosition="top"
+        >
+          {renderShowtimes()}
+        </Tabs>
+      </div>
+      {/* <CustomCard
         effectColor=""
         // required
         color="#14AEFF"
@@ -186,6 +194,7 @@ function FilmDetail(props) {
           </Tabs>
         </div>
       </CustomCard>
+    */}
     </section>
   );
 }
