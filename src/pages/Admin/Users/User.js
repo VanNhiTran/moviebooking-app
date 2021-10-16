@@ -136,9 +136,7 @@ function User() {
       >
         QUẢN LÝ NGƯỜI DÙNG
       </h1>
-      <button className="mb-7 mr-5">
-        <NavLink to="/admin/film/addfilm">Thêm người dùng</NavLink>
-      </button>
+      
       <Search
         className="mb-7"
         placeholder="Nhập tên người dùng muốn tìm"
@@ -148,6 +146,12 @@ function User() {
         onSearch={onSearch}
       />
       <Table columns={columns} dataSource={data} onChange={onChange} />
+      <div className="flex justify-end mt-5">
+        <button className=" self-center px-8 py-3 rounded ">
+        <NavLink to="/admin/film/addfilm">Thêm người dùng</NavLink>
+        </button>
+      </div>
+      
     </div>
   );
 }

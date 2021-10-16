@@ -378,7 +378,6 @@ export default function (props) {
       </button>
     </Fragment>
   );
-
   return (
     <div
       style={{

@@ -40,6 +40,7 @@ function AddUser() {
   };
 
   return (
+    
     <Form
       className="text-white"
       labelCol={{
@@ -93,7 +94,9 @@ function AddUser() {
       >
         <button type="submit">Thêm người dùng</button>
       </Form.Item>
+      
     </Form>
+    
   );
 }
 

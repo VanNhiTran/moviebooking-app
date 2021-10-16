@@ -19,19 +19,25 @@
     margin: 0 !important;
 } */
 .ant-table-container {
-    background: url(../../assets/img//BG.png);
-    background-position: center;
-    background-size: contain;
-    color: white
-
-
+  background: url(../../assets/img//BG.png);
+  background-position: center;
+  background-size: contain;
+  color: white;
 }
 .ant-table-tbody > tr.ant-table-row:hover {
-    color: black;
+  color: black;
 }
 .ant-layout-content {
-
-    background: #001529;
-    margin: 0 !important
+  background: #001529;
+  margin: 0 !important
     ;
+}
+.ant-pagination-item-ellipsis {
+  color: white !important;
+}
+.ant-table-thead th.ant-table-column-has-sorters:hover {
+  color: white;
+}
+.ant-layout-footer {
+  display: none;
 }

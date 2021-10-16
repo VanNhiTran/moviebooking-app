@@ -139,9 +139,7 @@ function Film() {
       >
         QUẢN LÝ PHIM
       </h1>
-      <button className="mb-7 self-center px-8 py-3 rounded">
-        <NavLink to="/admin/film/addfilm">Thêm phim mới</NavLink>
-      </button>
+
       <Search
         className="mb-7"
         placeholder="Nhập mã phim, tên phim, từ khoá phim muốn tìm"
@@ -151,6 +149,11 @@ function Film() {
         onSearch={onSearch}
       />
       <Table columns={columns} dataSource={data} onChange={onChange} />
+      <div className="flex justify-end mt-5">
+        <button className="mb-7 self-center px-8 py-3 rounded">
+          <NavLink to="/admin/film/addfilm">Thêm phim mới</NavLink>
+        </button>
+      </div>
     </div>
   );
 }
